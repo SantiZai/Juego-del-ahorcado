@@ -37,6 +37,12 @@ var $juego = {
 
 //* FUNCIONES
 
+function volverAlInicio() {
+    nuevoJuego();
+    $traer.tablero.classList.add("oculto");
+    $traer.inicio.classList.remove("oculto");
+}
+
 function dibujar(juego, letra) {
     resetearJuego();
     var ahorcado = $traer.ahorcado;
@@ -47,6 +53,15 @@ function dibujar(juego, letra) {
     var letrasAcertadas = $traer.letrasAcertadas;
     var erradas = $juego.erradas;
     var letrasErradas = $traer.letrasErradas;
+    var letrasP = 0;
+
+    function ganaste() {
+        var adivinadas = $juego.adivinadas;
+        if (letrasP == adivinadas.length) {
+            alert("hola");
+            volverAlInicio();
+        }
+    }
 
     //crear letras acertadas
     for (let letra of palabra) {
@@ -58,6 +73,7 @@ function dibujar(juego, letra) {
         $span.setAttribute('class', 'letra acertada')
         $span.appendChild($txt);
         letrasAcertadas.appendChild($span);
+        letrasP ++;
     }
     
     //crear letras erradas
@@ -68,6 +84,7 @@ function dibujar(juego, letra) {
         $span.appendChild($txt);
         letrasErradas.appendChild($span);
     }
+    setTimeout(ganaste, 300);
 }
 
 //oculta el inicio y muestra el ahorcado
@@ -178,7 +195,7 @@ function palabraAleatoria(palabras) {
 }
 
 function check(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
+    tecla = (document.getElementById(input)) ? e.keyCode : e.which;
 
     //siempre permitir tecla de borrar
     if (tecla == 8) {
@@ -220,123 +237,3 @@ $traer.botonCancelarPalabra.onclick = cancelarPalabra;
 //tablero
 $traer.desistir.onclick = desistir;
 $traer.nuevoJuego.onclick = nuevoJuego;
-
-/*
-var juego = null;
-
-function jugar(juego){
-    //actualizar imagen hombre
-    var hombre = traer.ahorcado;
-    var estado = juego.estado;
-    if (estado == 8) {
-        estado = juego.previo;
-    }
-    hombre.src = "media/estados/" + estado + ".png";
-
-    //crear letras adivinadas
-    var palabra = juego.palabra;
-    var adivinada = juego.adivinada;
-    var letrasAdivinadas = traer.letrasAcertadas;
-
-    //borrar los elementos anteriores
-    letrasAdivinadas.innerHTML = '';
-    for (let letra of palabra){
-        let $span = document.createElement('span');
-        let $txt = document.createTextNode('');
-        if (adivinada.indexOf(letra) >= 0){
-            $txt.nodeValue = letra;
-        }
-        $span.setAttribute("class", "letra acertada");
-        $span.appendChild($txt);
-        letrasAdivinadas.appendChild($span);
-    }
-
-    //crear letras erradas
-    var errada = juego.errado;
-    var letrasErradas = traer.letrasErradas;
-
-    //borrar los elementos anteriores
-    letrasErradas.innerHTML = '';
-    for (let letra of errada) {
-        let $span = document.createElement('span');
-        let $txt = document.createTextNode(letra);
-        $span.setAttribute("class", "letra errada");
-        $span.appendChild($txt)
-        letrasErradas.appendChild($span);
-    }
-}
-
-function adivinar(juego, letra){
-    var estado = juego.estado;
-    
-    //verificar si ya se gano o perdio
-    if (estado == 7 || estado == 8) {
-        return;
-    }
-
-    var adivinado = juego.adivinada;
-    var errado = juego.errado;
-
-    //si ya se adivino o erro la letra no hay que hacer nada
-    if (adivinado.indexOf(letra) >=0 || errado.indexOf(letra) >= 0) {
-        return
-    }
-
-    var palabra = juego.palabra;
-
-    //si la letra es de la palabra
-    if (palabra.indexOf(letra) >= 0) {
-        let ganado = true;
-
-        //comprobamos si ganamos
-        for (let l of palabra) {
-            if (adivinado.indexOf(l) < 0 && l !== letra) {
-                ganado = false;
-                juego.previo = juego.estado;
-                break
-            }
-        }
-
-        //si ya se gano hay que indicarlo
-        if (ganado) {
-            juego.estado = 8;
-        }
-        //agreagar la letra a la lista de letras adivinadas
-        adivinado.push(letra);
-    } 
-
-    //si la letra no pertenece a la palabra
-    else {
-        juego.estado++;
-        errado.push(letra);
-    }
-}
-
-window.onkeypress = function adivinarLetra(e) {
-    var letra = e.key
-    letra = letra.toUpperCase();
-    if (/[^A-ZÑ]/.test(letra)) {
-        return
-    }
-    adivinar(juego, letra);
-    jugar(juego);
-}
-
-window.nuevoJuego = function nuevoJuego() {
-    var palabra = palabraAleatoria();
-    juego = {};
-    juego.palabra = palabra;
-    juego.estado = 1;
-    juego.adiviado = [];
-    juego.errado = []; 
-    jugar(juego);
-}
-
-function palabraAleatoria() {
-    var index = ~~(Math.random() * palabras.length)
-    return palabras[index]
-}
-    
-nuevoJuego();
-console.log(juego);
-*/
