@@ -32,7 +32,7 @@
         <section class="ingresar-palabra oculto">
 
             <div class="contenedor-input">
-                <input type="text" class="input-nueva-palabra" id="input" placeholder="Ingrese una palabra" oninput="this.value = this.value.toUpperCase()" maxlength="8">
+                <input type="text" class="input-nueva-palabra" id="input" placeholder="Ingrese una palabra" oninput="this.value = this.value.toUpperCase()" onkeypress="return check(event)" maxlength="8">
             </div>
 
             <div class="seccion-botones">

@@ -68,16 +68,6 @@ function dibujar(juego, letra) {
         $span.appendChild($txt);
         letrasErradas.appendChild($span);
     }
-
-    /*for (let letra of palabra) {
-        $span = document.createElement('span');
-        $txt = document.createTextNode('');
-        var textoGuiones = letra.replace(/[A-Z]/g, "")
-        $txt.nodeValue = textoGuiones;
-        $span.setAttribute('class', 'letra acertada');
-        $span.appendChild($txt);
-        $traer.letrasAcertadas.appendChild($span);
-    }*/
 }
 
 //oculta el inicio y muestra el ahorcado
@@ -122,8 +112,8 @@ function agregarPalabraYEmpezar() {
             $traer.seccionAgregarPalabra.classList.add("oculto");
             $traer.tablero.classList.remove("oculto");
         }
-        console.log($juego)
     }
+    nuevoJuego();
 }
 
 function cancelarPalabra() {
@@ -151,12 +141,9 @@ function nuevoJuego() {
     resetearJuego();
     $juego.palabra = palabraAleatoria($palabras);
     $juego.estado = 1;
-    $juego.palabra = palabraAleatoria($palabras);
-    $juego.estado = 1;
     $juego.adivinadas = [];
     $juego.erradas = [];
     dibujar($juego, $juego.palabra.length);
-    console.log($juego);
 }
 
 function adivinar(letra) {
@@ -181,7 +168,6 @@ function adivinar(letra) {
             $juego.estado++;
         }
     }
-    console.log($juego)
 }
 
 
@@ -189,6 +175,20 @@ function adivinar(letra) {
 function palabraAleatoria(palabras) {
     var palabra = Math.round(Math.random() * (palabras.length - 1));
     return palabras[palabra];
+}
+
+function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //siempre permitir tecla de borrar
+    if (tecla == 8) {
+        return true;
+    }
+
+    // patron de entrada
+    patron = /[A-Za-zñÑ]/;
+    teclaFinal = String.fromCharCode(tecla);
+    return patron.test(teclaFinal);
 }
 
 window.onkeypress = function adivinarLetra(e) {
@@ -199,14 +199,13 @@ window.onkeypress = function adivinarLetra(e) {
     }
     adivinar(letra);
     if ($juego.estado == 7) {
-        alert("perdiste")
+        alert("perdiste");
+        nuevoJuego();
     }
     dibujar($juego, letra);
 }
 
 //* FIN FUNCIONES
-
-console.log($juego.palabra);
 
 //!funciones asignadas a botones
 
