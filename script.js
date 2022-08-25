@@ -58,7 +58,7 @@ function dibujar(juego, letra) {
     function ganaste() {
         var adivinadas = $juego.adivinadas;
         if (letrasP == adivinadas.length) {
-            alert("hola");
+            alert("Ganaste");
             volverAlInicio();
         }
     }
@@ -216,8 +216,12 @@ window.onkeypress = function adivinarLetra(e) {
     }
     adivinar(letra);
     if ($juego.estado == 7) {
-        alert("perdiste");
-        nuevoJuego();
+        setTimeout(perdiste, 100);
+        function perdiste() {
+            alert("Perdiste");
+            volverAlInicio();
+            nuevoJuego();
+        }
     }
     dibujar($juego, letra);
 }

@@ -298,6 +298,10 @@ body{
 
     /*? TABLERO */
 
+    .letras-acertadas{
+        flex-wrap: wrap;
+    }
+
     .botones-juego{
         flex-direction: column;
     }
