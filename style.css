@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+body{
+    height: 100vh;
+    background-color: #eeefff;
+}
+
+/*! HEADER */
+
+header{
+    height: 7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contenedor-logo{
+    width: 10%;
+    height: 80%;
+}
+
+.logo{
+    height: 100%;
+    margin-top: 10px;
+}
+
+/*! BODY */
+
+/*? INICIO */
+
+.inicio{
+    height: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.botones-inicio{
+    display: flex;
+    flex-direction: column;
+}
+
+.boton{
+    font-family: 'Inter', sans-serif;
+    border-radius: 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.iniciar{
+    font-size: 16px;
+    padding: 25px 80px;
+    color: #fff;
+    background: #0a3871;
+    border: none;
+    margin: 15px;
+    transition: all 400ms;
+}
+
+.iniciar:hover{
+    background: #072b57;
+}
+
+.agregar-palabra{
+    font-size: 14px;
+    padding: 15px 25px;
+    color: #0a3871;
+    background: #fff;
+    border: 1px solid #0a3871;
+    margin: 15px;
+    transition: all 400ms;
+}
+
+.agregar-palabra:hover{
+    background: #ddd;
+}
+
+/*? INGRESAR PALABRA */
+
+.ingresar-palabra{
+    height: 80%;
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.contenedor-input{
+    margin: 0px auto;
+    width: 80%;
+}
+
+.input-nueva-palabra{
+    height: 30px;
+    width: 100%;
+    background: local;
+    border: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.input-nueva-palabra::placeholder{
+    color: #0a3871;
+}
+
+.seccion-botones{
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+}
+
+.aclaracion{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.info-icon{
+    height: 100%;
+    margin: auto 3px auto 0px;
+}
+
+.aclaracion-botones{
+    height: 100%;
+    font-size: 14px;
+    margin: auto 0px;
+}
+
+.botones-agregar{
+    display: flex;
+}
+
+.guardar{
+    padding: 20px 50px;
+    margin-right: 15px;
+    border-radius: 20px;
+    border: none;
+    background: #0a3871;
+    color: #fff;
+    transition: all 400ms;
+}
+
+.guardar:hover{
+    background: #072b57;
+}
+
+.cancelar{
+    padding: 20px 50px;
+    border: 1px solid #0a3871;
+    border-radius: 20px;
+    color: #0a3871;
+    transition: all 400ms;
+}
+
+.cancelar:hover{
+    background: #ddd;
+}
+
+/*? TABLERO */
+
+.tablero{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ahorcado{
+    max-width: 450px;
+    height: 65%;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.img-ahorcado{
+    width: 100%;
+    height: 100%;
+}
+
+.letras-acertadas{
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.letra{
+    font-family: 'Inter', sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.acertada{
+    font-size: 1.5rem;
+    margin-left: 2%;
+    border-bottom: 1px solid #0a3871;
+    line-height: 4.5rem;
+    height: 4.5rem;
+    width: 4.5rem;
+}
+
+.letras-erradas{
+    height: 10%;
+    width: 100%;
+    margin: 2rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.errada{
+    margin-left: 2%;
+}
+
+.botones-juego{
+    display: flex;
+}
+
+/*? FOOTER */
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    vertical-align: bottom;
+    justify-content: space-evenly;
+}
+
+.logo-ig{
+    height: 100%;
+}
+
+/*! EXTRAS */
+
+.oculto{
+    display: none;
+}
+
+/*! QUERIES */
+
+@media screen and (max-width: 768px) {
+
+    /*! HEADER */
+
+    .contenedor-logo{
+        width: 100%;
+        text-align: center;
+    }
+
+    /*! BODY */
+
+    /*? INICIO */
+
+    .iniciar{
+        padding: 20px 60px;
+    }
+
+    .agregar-palabra{
+        padding: 15px 15px;
+    }
+
+    /*? INGRESAR PALABRA */
+
+    .seccion-botones{
+        width: 100%;
+    }
+
+    .botones-agregar{
+        flex-direction: column;
+    }
+
+    .guardar{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .cancelar{
+        width: 100%;
+    }
+
+    /*? TABLERO */
+
+    .botones-juego{
+        flex-direction: column;
+    }
+}

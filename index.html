@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ahorcado</title>
+        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="style.css">
+    
+    </head>
+     
+    <body>
+    
+        <header>
+
+            <div class="contenedor-logo">
+                <a href="#"><img src="media/Logo.png" alt="logo Alura" class="logo"></a>
+            </div>
+
+        </header>
+
+        <section class="inicio">
+
+            <div class="botones-incio">
+                <button class="iniciar boton">Iniciar juego</button><br>
+                <button class="agregar-palabra boton">Agregar nueva palabra</button>
+            </div>
+
+        </section>
+
+        <section class="ingresar-palabra oculto">
+
+            <div class="contenedor-input">
+                <input type="text" class="input-nueva-palabra" id="input" placeholder="Ingrese una palabra" oninput="this.value = this.value.toUpperCase()" maxlength="8">
+            </div>
+
+            <div class="seccion-botones">
+
+                <div class="aclaracion">
+                    <img src="media/Vector.png" class="info-icon">
+                    <p class="aclaracion-botones">Máx. de 8 letras</p>
+                </div>
+
+                <div class="botones-agregar">
+                    <button class="guardar-palabra guardar boton">Guardar y empezar</button>
+                    <button class="cancelar-palabra cancelar boton">Cancelar</button>
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <section class="tablero oculto">
+
+            <div class="ahorcado">
+                <img alt="Ahorcado" class="img-ahorcado" id="img-ahorcado">
+            </div>
+
+            <div class="letras-acertadas"></div>
+            <span class="span"></span>
+
+            <div class="letras-erradas"></div>
+
+            <div class="botones-juego">
+                <button class="nuevo-juego guardar boton">Nuevo juego</button>
+                <button class="desistir cancelar boton">Desistir</button>
+            </div>
+
+        </section>
+        
+        <footer class="footer">
+            
+            <p>footer</p>
+            <img src="media/logo-ig-png-32457.png" alt="Logo Instagram" class="logo-ig">
+            
+        </footer>
+        
+        <script src="script.js"></script>
+
+    </body>
+</html>
