@@ -2,7 +2,10 @@
 
 body{
     height: 100vh;
-    background-color: #eeefff;
+    background: linear-gradient(to left, #65c1ff, #a2e4fc, #ffffff);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /*! HEADER */
@@ -230,22 +233,39 @@ header{
 
 /*? FOOTER */
 
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 
 .footer{
     width: 100%;
     height: 5%;
     display: flex;
-    vertical-align: bottom;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 10%;
+    background: image();
+}
+
+.link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .logo-ig{
-    height: 100%;
+    height: 40%;
+}
+
+.p-copy{
+    font-family: 'Inter', sans-serif;
+}
+
+.logo-linkedin{
+    height: 50%;
+}
+
+.ola{
+    position: absolute;
+    bottom: 0px;
+    opacity: .15;
 }
 
 /*! EXTRAS */

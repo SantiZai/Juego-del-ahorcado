@@ -1,8 +1,5 @@
 var $palabras = [
-    'ALURA',
     'ORACLE',
-    'AHORCADO',
-    'PROGRAMO',
     'JUEGO',
     'DESAFIO'
 ];
@@ -55,14 +52,6 @@ function dibujar(juego, letra) {
     var letrasErradas = $traer.letrasErradas;
     var letrasP = 0;
 
-    function ganaste() {
-        var adivinadas = $juego.adivinadas;
-        if (letrasP == adivinadas.length) {
-            alert("Ganaste");
-            volverAlInicio();
-        }
-    }
-
     //crear letras acertadas
     for (let letra of palabra) {
         let $span = document.createElement("span");
@@ -74,6 +63,14 @@ function dibujar(juego, letra) {
         $span.appendChild($txt);
         letrasAcertadas.appendChild($span);
         letrasP ++;
+    }
+
+    function ganaste() {
+        var adivinadas = $juego.adivinadas;
+        if (letrasP == adivinadas.length) {
+            alert("Ganaste");
+            volverAlInicio();
+        }
     }
     
     //crear letras erradas
@@ -185,6 +182,7 @@ function adivinar(letra) {
             $juego.estado++;
         }
     }
+    console.log($juego);
 }
 
 
@@ -231,7 +229,7 @@ window.onkeypress = function adivinarLetra(e) {
 //!funciones asignadas a botones
 
 //inicio
-$traer.botonInicio.onclick = iniciarJuego, dibujar($juego, $juego.palabra.length);
+$traer.botonInicio.onclick = iniciarJuego, resetearJuego, nuevoJuego, dibujar($juego, $juego.palabra.length);
 $traer.botonAgregarPalabra.onclick = mostrarAgregarPalabra;
 
 //agregar palabra
