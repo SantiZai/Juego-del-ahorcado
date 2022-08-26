@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 body{
+    background: linear-gradient(to left, #eff1fb, #89e8f5);
     height: 100vh;
-    background: linear-gradient(to left, #65c1ff, #a2e4fc, #ffffff);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,6 +25,11 @@ header{
 .logo{
     height: 100%;
     margin-top: 10px;
+    transition: all 500ms;
+}
+
+.logo:hover{
+    transform: rotateY(180deg);
 }
 
 /*! BODY */
@@ -203,6 +208,7 @@ header{
     display: inline-block;
     vertical-align: middle;
     text-align: center;
+    transition: all 300ms;
 }
 
 .acertada{
@@ -212,6 +218,10 @@ header{
     line-height: 4.5rem;
     height: 4.5rem;
     width: 4.5rem;
+}
+
+.acertada:hover{
+    transform: translateY(-5px);
 }
 
 .letras-erradas{
@@ -260,12 +270,6 @@ header{
 
 .logo-linkedin{
     height: 50%;
-}
-
-.ola{
-    position: absolute;
-    bottom: 0px;
-    opacity: .15;
 }
 
 /*! EXTRAS */
