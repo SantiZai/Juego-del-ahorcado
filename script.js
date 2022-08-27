@@ -169,11 +169,15 @@ function adivinar(letra) {
     //recorre la palabra y se fija si tiene la letra presionada
     if (palabra.indexOf(letra) >= 0) {
 
-        if (palabra.indexOf(letra) !== palabra.lastIndexOf(letra)) {
-            adivinadas.push(letra + "x2");
+        //recorre la palabra en busca de letras repetidas
+        for (var i = 0; i < palabra.length; i++) {
+            if (palabra[i] == letra) {
+                adivinadas.push(letra);
+            }
         }
 
         //si tiene la letra pero esta no esta en el arreglo de adivinadas la agrega
+        //va despues del for para que no se repitan las letras de mas, ya que si el for va despues primero agrega la letra al arreglo y despues el for verifica que ya esta entonces la agrega otra vez
         if (adivinadas.indexOf(letra) < 0) {
             adivinadas.push(letra);
         }
