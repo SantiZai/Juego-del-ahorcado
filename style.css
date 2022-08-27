@@ -175,12 +175,13 @@ header{
 /*? TABLERO */
 
 .tablero{
-    width: 100%;
+    width: 80%;
     height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .ahorcado{
@@ -297,6 +298,10 @@ header{
         padding: 20px 60px;
     }
 
+    .boton{
+        font-size: 13px;
+    }
+
     .agregar-palabra{
         padding: 15px 15px;
     }
@@ -313,20 +318,46 @@ header{
 
     .guardar{
         width: 100%;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        padding: 10px 20px;
     }
 
     .cancelar{
         width: 100%;
+        padding: 10px 20px;
     }
 
     /*? TABLERO */
 
+    .ahorcado{
+        margin: auto;
+    }
+
     .letras-acertadas{
+        margin-top: 2rem;
         flex-wrap: wrap;
     }
 
+    .acertada{
+        font-size: 1.2rem;
+        margin-left: 2%;
+        border-bottom: 1px solid #0a3871;
+        line-height: 3rem;
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .letras-erradas{
+        height: 10%;
+        width: 100%;
+        margin: 4rem auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
     .botones-juego{
+        display: block;
         flex-direction: column;
     }
 }
