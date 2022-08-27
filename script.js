@@ -1,7 +1,8 @@
 var $palabras = [
     'ORACLE',
     'JUEGO',
-    'DESAFIO'
+    'DESAFIO',
+    'PROGRAMO'
 ];
 
 var $traer = {
@@ -52,7 +53,7 @@ function dibujar(juego, letra) {
     var letrasErradas = $traer.letrasErradas;
     var letrasP = 0;
 
-    //crear letras acertadas
+    //crear espacios para letras acertadas
     for (let letra of palabra) {
         let $span = document.createElement("span");
         let $txt = document.createTextNode('');
@@ -62,7 +63,7 @@ function dibujar(juego, letra) {
         $span.setAttribute('class', 'letra acertada')
         $span.appendChild($txt);
         letrasAcertadas.appendChild($span);
-        letrasP ++;
+        letrasP++;
     }
 
     function ganaste() {
@@ -167,6 +168,10 @@ function adivinar(letra) {
 
     //recorre la palabra y se fija si tiene la letra presionada
     if (palabra.indexOf(letra) >= 0) {
+
+        if (palabra.indexOf(letra) !== palabra.lastIndexOf(letra)) {
+            adivinadas.push(letra + "x2");
+        }
 
         //si tiene la letra pero esta no esta en el arreglo de adivinadas la agrega
         if (adivinadas.indexOf(letra) < 0) {
