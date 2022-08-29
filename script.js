@@ -24,7 +24,8 @@ var $traer = {
     letrasErradas: document.querySelector(".letras-erradas"),
     nuevoJuego: document.querySelector(".nuevo-juego"),
     desistir: document.querySelector(".desistir"),
-    textoCelular: document.querySelector(".texto-celular")
+    textoCelular: document.querySelector(".texto-celular"),
+    boton: document.querySelector(".s"),
 }
 
 var $juego = {
@@ -234,6 +235,12 @@ window.onkeypress = function adivinarLetra(e) {
     dibujar($juego, letra);
 }
 
+function agregar() {
+    letraa = $traer.textoCelular.value;
+    letra = letraa.toUpperCase();
+    adivinar(letra);
+}
+
 function limpiar() {
     $traer.textoCelular.value = '';
 }
@@ -253,3 +260,4 @@ $traer.botonCancelarPalabra.onclick = cancelarPalabra;
 //tablero
 $traer.desistir.onclick = desistir;
 $traer.nuevoJuego.onclick = nuevoJuego;
+$traer.boton.onclick = agregar;
