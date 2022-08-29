@@ -238,13 +238,23 @@ header{
     margin-left: 2%;
 }
 
+.texto-celular{
+    text-align: center;
+    background: local;
+    border: none;
+    margin-bottom: 5px;
+    visibility: hidden;
+}
+
+.texto-celular::placeholder{
+    color: #0a3871;
+}
+
 .botones-juego{
     display: flex;
 }
 
 /*? FOOTER */
-
-
 
 .footer{
     width: 100%;
@@ -354,6 +364,10 @@ header{
         text-align: center;
         display: flex;
         justify-content: center;
+    }
+
+    .texto-celular{
+        visibility: visible;
     }
 
     .botones-juego{

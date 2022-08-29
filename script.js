@@ -23,7 +23,8 @@ var $traer = {
     letrasAcertadas: document.querySelector(".letras-acertadas"),
     letrasErradas: document.querySelector(".letras-erradas"),
     nuevoJuego: document.querySelector(".nuevo-juego"),
-    desistir: document.querySelector(".desistir")
+    desistir: document.querySelector(".desistir"),
+    textoCelular: document.querySelector(".texto-celular")
 }
 
 var $juego = {
@@ -191,7 +192,7 @@ function adivinar(letra) {
             $juego.estado++;
         }
     }
-    console.log($juego);
+    limpiar();
 }
 
 
@@ -231,6 +232,10 @@ window.onkeypress = function adivinarLetra(e) {
         }
     }
     dibujar($juego, letra);
+}
+
+function limpiar() {
+    $traer.textoCelular.value = '';
 }
 
 //* FIN FUNCIONES
