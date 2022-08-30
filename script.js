@@ -22,8 +22,9 @@ var $traer = {
     ahorcado: document.getElementById("img-ahorcado"),
     letrasAcertadas: document.querySelector(".letras-acertadas"),
     letrasErradas: document.querySelector(".letras-erradas"),
+    btnLetras: document.querySelectorAll("#letras button"),
     nuevoJuego: document.querySelector(".nuevo-juego"),
-    desistir: document.querySelector(".desistir"),
+    desistir: document.querySelector(".desistir")
 }
 
 var $juego = {
@@ -51,7 +52,7 @@ function dibujar(juego, letra) {
     var letrasAcertadas = $traer.letrasAcertadas;
     var erradas = $juego.erradas;
     var letrasErradas = $traer.letrasErradas;
-    var letrasP = 0;
+    var letrasAdivinadas = 0;
 
     //crear espacios para letras acertadas
     for (let letra of palabra) {
@@ -63,12 +64,12 @@ function dibujar(juego, letra) {
         $span.setAttribute('class', 'letra acertada')
         $span.appendChild($txt);
         letrasAcertadas.appendChild($span);
-        letrasP++;
+        letrasAdivinadas++;
     }
 
     function ganaste() {
         var adivinadas = $juego.adivinadas;
-        if (letrasP == adivinadas.length) {
+        if (letrasAdivinadas == adivinadas.length) {
             alert("Ganaste");
             volverAlInicio();
         }
@@ -83,6 +84,59 @@ function dibujar(juego, letra) {
         letrasErradas.appendChild($span);
     }
     setTimeout(ganaste, 300);
+}
+
+function clickLetras(event) {
+    var spansAcertados = document.querySelectorAll(".letras-acertadas span");
+    var boton = event.target;
+    boton.disable = true;
+    var letra = boton.innerHTML.toUpperCase();
+    var palabra = $juego.palabra.toUpperCase();
+    var ahorcado = $traer.ahorcado;
+    var letrasAdivinadas = 0;
+
+    var acerto = false;
+    for (let i = 0; i < palabra.length; i++) {
+        if (letra == palabra[i]) {
+            spansAcertados[i].innerHTML = letra;
+            $juego.adivinadas.push(letra);
+            acerto = true;
+        }
+        letrasAdivinadas++;
+    }
+
+    function ganaste() {
+        var adivinadas = $juego.adivinadas;
+        if (letrasAdivinadas == adivinadas.length) {
+            alert("Ganaste");
+            volverAlInicio();
+        }
+    }
+
+    if (acerto == false) {
+            if ($juego.erradas.indexOf(letra) < 0) {
+                $juego.erradas.push(letra);
+                $juego.estado++;
+            }
+            $traer.letrasErradas.innerHTML = '';
+            for (let letra of $juego.erradas) {
+                let $span = document.createElement("span");
+                let $txt = document.createTextNode(letra);
+                $span.setAttribute('class', 'letra errada')
+                $span.appendChild($txt);
+                $traer.letrasErradas.appendChild($span);
+            }
+            ahorcado.src = "media/estados/" + $juego.estado + ".png";
+            if ($juego.estado == 7) {
+                setTimeout(perdiste, 100);
+                function perdiste() {
+                    alert("Perdiste");
+                    volverAlInicio();
+                    nuevoJuego();
+                }
+            }
+    }
+    setTimeout(ganaste, 200);
 }
 
 //oculta el inicio y muestra el ahorcado
@@ -247,3 +301,7 @@ $traer.botonCancelarPalabra.onclick = cancelarPalabra;
 //tablero
 $traer.desistir.onclick = desistir;
 $traer.nuevoJuego.onclick = nuevoJuego;
+/* click de adivinar letra */
+for (let i = 0; i < $traer.btnLetras.length; i++) {
+    $traer.btnLetras[i].addEventListener('click', clickLetras);
+}

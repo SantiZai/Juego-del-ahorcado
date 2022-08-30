@@ -238,16 +238,27 @@ header{
     margin-left: 2%;
 }
 
-.texto-celular{
-    text-align: center;
-    background: local;
-    border: none;
-    margin-bottom: 5px;
+#letras{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
     visibility: hidden;
+    margin-bottom: 5%;
 }
 
-.texto-celular::placeholder{
-    color: #0a3871;
+#letras button{
+    font-family: 'Inter', sans-serif;
+    color: #072b57;
+    padding: 7px;
+    margin: 2px;
+    background:local;
+    border: none;
+}
+
+#letras button:hover{
+    cursor: pointer;
+    transform: scale(110%);
 }
 
 .botones-juego{
@@ -366,7 +377,7 @@ header{
         justify-content: center;
     }
 
-    .texto-celular{
+    #letras{
         visibility: visible;
     }
 
