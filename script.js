@@ -34,7 +34,7 @@ var $juego = {
     erradas: []
 }
 
-//* FUNCIONES
+//* INICIO FUNCIONES
 
 function volverAlInicio() {
     nuevoJuego();
@@ -54,7 +54,7 @@ function dibujar(juego, letra) {
     var letrasErradas = $traer.letrasErradas;
     var letrasAdivinadas = 0;
 
-    //crear espacios para letras acertadas
+    //crear letras acertadas
     for (let letra of palabra) {
         let $span = document.createElement("span");
         let $txt = document.createTextNode('');
@@ -89,7 +89,6 @@ function dibujar(juego, letra) {
 function clickLetras(event) {
     var spansAcertados = document.querySelectorAll(".letras-acertadas span");
     var boton = event.target;
-    boton.disable = true;
     var letra = boton.innerHTML.toUpperCase();
     var palabra = $juego.palabra.toUpperCase();
     var ahorcado = $traer.ahorcado;
@@ -100,6 +99,8 @@ function clickLetras(event) {
         if (letra == palabra[i]) {
             spansAcertados[i].innerHTML = letra;
             $juego.adivinadas.push(letra);
+            //oculta el boton presionado
+            boton.classList.add("oculto");
             acerto = true;
         }
         letrasAdivinadas++;
@@ -135,6 +136,8 @@ function clickLetras(event) {
                     nuevoJuego();
                 }
             }
+            //oculta el boton presionado
+            boton.classList.add("oculto");
     }
     setTimeout(ganaste, 200);
 }
@@ -195,6 +198,7 @@ function cancelarPalabra() {
 
 //borra todos los guiones creados por el juego anterior
 function resetearJuego() {
+    var botones = document.querySelectorAll("#letras button");
     var acertadas = $juego.adivinadas;
     var erradas = $juego.erradas;
     var letrasAcertadas = $traer.letrasAcertadas;
@@ -203,6 +207,11 @@ function resetearJuego() {
     erradas.innerHTML = '';
     letrasAcertadas.innerHTML = '';
     letrasErradas.innerHTML = '';
+
+    //recorre todods los botones y los muestra
+    for (let boton of botones) {
+        boton.classList.remove("oculto");
+    }
 }
 
 //resetea la configuracion inicial y elige una nueva palabra
@@ -226,14 +235,10 @@ function adivinar(letra) {
         //recorre la palabra en busca de letras repetidas
         for (var i = 0; i < palabra.length; i++) {
             if (palabra[i] == letra) {
-                adivinadas.push(letra);
+                if (adivinadas.indexOf(letra) < 0) {
+                    adivinadas.push(letra);
+                }
             }
-        }
-
-        //si tiene la letra pero esta no esta en el arreglo de adivinadas la agrega
-        //va despues del for para que no se repitan las letras de mas, ya que si el for va despues primero agrega la letra al arreglo y despues el for verifica que ya esta entonces la agrega otra vez
-        if (adivinadas.indexOf(letra) < 0) {
-            adivinadas.push(letra);
         }
 
         //si no tiene la letra y no esta en el arreglo de erradas la agrega
@@ -254,38 +259,6 @@ function palabraAleatoria(palabras) {
     return palabras[palabra];
 }
 
-function check(e) {
-    tecla = (document.getElementById(input)) ? e.keyCode : e.which;
-
-    //siempre permitir tecla de borrar
-    if (tecla == 8) {
-        return true;
-    }
-
-    // patron de entrada
-    patron = /[A-Za-zñÑ]/;
-    teclaFinal = String.fromCharCode(tecla);
-    return patron.test(teclaFinal);
-}
-
-window.onkeypress = function adivinarLetra(e) {
-    var letra = e.key
-    letra = letra.toUpperCase();
-    if (/[^A-ZÑ]/.test(letra)) {
-        return
-    }
-    adivinar(letra);
-    if ($juego.estado == 7) {
-        setTimeout(perdiste, 100);
-        function perdiste() {
-            alert("Perdiste");
-            volverAlInicio();
-            nuevoJuego();
-        }
-    }
-    dibujar($juego, letra);
-}
-
 //* FIN FUNCIONES
 
 //!funciones asignadas a botones
@@ -301,7 +274,8 @@ $traer.botonCancelarPalabra.onclick = cancelarPalabra;
 //tablero
 $traer.desistir.onclick = desistir;
 $traer.nuevoJuego.onclick = nuevoJuego;
-/* click de adivinar letra */
+
+//click para activar la funcion de adivinar la letra
 for (let i = 0; i < $traer.btnLetras.length; i++) {
     $traer.btnLetras[i].addEventListener('click', clickLetras);
 }

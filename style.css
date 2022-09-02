@@ -243,7 +243,6 @@ header{
     flex-wrap: wrap;
     gap: 5px;
     justify-content: center;
-    visibility: hidden;
     margin-bottom: 5%;
 }
 
@@ -375,10 +374,6 @@ header{
         text-align: center;
         display: flex;
         justify-content: center;
-    }
-
-    #letras{
-        visibility: visible;
     }
 
     .botones-juego{
