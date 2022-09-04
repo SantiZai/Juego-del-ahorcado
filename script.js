@@ -1,8 +1,11 @@
 var $palabras = [
-    'ORACLE',
+    'ALURA',
     'JUEGO',
     'DESAFIO',
-    'PROGRAMO'
+    'JAVA',
+    'PYTHON',
+    'CSS',
+    'AHORCADO'
 ];
 
 var $traer = {

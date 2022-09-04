@@ -239,6 +239,7 @@ header{
 }
 
 #letras{
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
@@ -248,8 +249,9 @@ header{
 
 #letras button{
     font-family: 'Inter', sans-serif;
+    font-weight: bold;
     color: #072b57;
-    padding: 7px;
+    padding: 7px 5px;
     margin: 2px;
     background:local;
     border: none;
@@ -350,6 +352,8 @@ header{
     /*? TABLERO */
 
     .ahorcado{
+        max-width: 300px;
+        padding-top: 100px;
         margin: auto;
     }
 
