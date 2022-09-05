@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 body{
-    background: linear-gradient(to left, #eff1fb, #89e8f5);
+    background-image:url('media/fondo.jpg');
+    background-size:cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -283,9 +284,14 @@ header{
     justify-content: center;
 }
 
-.logo-ig{
+.logo-git{
     height: 40%;
 }
+
+.logo-git:hover{
+    transform: scale(110%);
+}
+
 
 .p-copy{
     font-family: 'Inter', sans-serif;
@@ -293,6 +299,10 @@ header{
 
 .logo-linkedin{
     height: 50%;
+}
+
+.logo-linkedin:hover{
+    transform: scale(110%);
 }
 
 /*! EXTRAS */
